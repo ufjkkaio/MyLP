@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI駆動開発エンジニア「新垣 カイオ」のポートフォリオサイト。Next.js/Reactと最新AIを駆使し、爆速でWebプロダクトを構築します。">
+  <title>新垣 カイオ - AI駆動開発エンジニア | ポートフォリオ</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: '#1A202C',
+            neonBlue: '#00F0FF',
+            limeGreen: '#00FF00',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- AOS.js (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    :root {
+      --midnight: #1A202C;
+      --neon-blue: #00F0FF;
+      --lime-green: #00FF00;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      background: linear-gradient(to bottom, transparent, #0D1117) #1A202C;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+    
+    /* カスタムアニメーション */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* グラデーションテキスト */
+    .gradient-text {
+      background: linear-gradient(135deg, #00F0FF 0%, #00FF00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* スキルレベル表示用 */
+    .skill-level {
+      height: 4px;
+      background: linear-gradient(90deg, #00F0FF 0%, #00FF00 100%);
+      border-radius: 2px;
+    }
+    
+    /* ホバーエフェクト強化 */
+    .portfolio-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section id="hero" class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- 背景装飾 -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-[#00F0FF] rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-[#00FF00] rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto text-center z-10" data-aos="fade-up" data-aos-duration="1000">
+      <!-- 名前を強調表示（キャッチコピーの上） -->
+      <div class="mb-8" data-aos="fade-down" data-aos-delay="100">
+        <p class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 tracking-wide">
+          AI駆動開発エンジニア
+        </p>
+        <p class="text-3xl sm:text-4xl lg:text-5xl font-extrabold gradient-text tracking-tight">
+          新垣 カイオ
+        </p>
+      </div>
+      
+      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 lg:mb-10 gradient-text">
+        あなたのアイデアを、<br class="sm:hidden">
+        AIの速度で現実に。
+      </h1>
+      <p class="text-base sm:text-lg lg:text-xl text-gray-400 mb-10 lg:mb-12 max-w-2xl mx-auto leading-relaxed">
+        Next.js/Reactと最新AIを駆使し、爆速でWebプロダクトを構築します
+      </p>
+      <a
+        href="https://crowdworks.jp/public/employees/your-profile-id"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-10 py-4 lg:px-12 lg:py-5 bg-[#00F0FF] text-[#1A202C] font-bold text-lg lg:text-xl rounded-lg hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-[#00F0FF]/50"
+        data-aos="zoom-in"
+        data-aos-delay="300"
+      >
+        <i data-lucide="rocket" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+        今すぐ相談する
+      </a>
+    </div>
+
+    <!-- スクロールインジケーター -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce" data-aos="fade-up" data-aos-delay="500">
+      <i data-lucide="chevron-down" class="w-6 h-6 text-[#00F0FF]"></i>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+    <div class="max-w-6xl mx-auto w-full">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 lg:mb-16 text-center gradient-text" data-aos="fade-up">
+        新垣 カイオについて
+      </h2>
+
+      <div class="grid sm:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
+        <!-- テキストコンテンツ -->
+        <div class="space-y-6 lg:space-y-8" data-aos="fade-right" data-aos-delay="100">
+          <div class="space-y-5 lg:space-y-6 text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed">
+            <p>
+              <span class="text-[#00F0FF] font-semibold">21歳</span>
+              、兵庫県在住。大学中退後、AI駆動開発に特化したWebエンジニアとしてのキャリアを開始。
+            </p>
+            <p>
+              <span class="inline-flex items-center gap-2 text-[#00FF00] font-semibold">
+                <i data-lucide="languages" class="w-5 h-5"></i>
+                英語・ポルトガル語対応可能
+              </span>
+              で、最新技術リサーチや海外ドキュメントの直接解読が可能。
+              常に世界最先端の技術動向をキャッチアップし、日本ではまだ知られていない
+              革新的な手法を実装に取り入れています。
+            </p>
+            <p class="text-xl sm:text-2xl lg:text-2xl text-white font-semibold pt-6 lg:pt-8 border-t border-gray-700 leading-relaxed">
+              「既存の常識に囚われず、AIを最適なパートナーとして活用することで、
+              開発の常識を覆します。」
+            </p>
+          </div>
+          
+          <!-- 強みアイコン -->
+          <div class="flex flex-wrap gap-4 pt-6">
+            <div class="flex items-center gap-2 px-4 py-2 bg-gray-900 rounded-lg border border-[#00F0FF]/30">
+              <i data-lucide="brain" class="w-5 h-5 text-[#00F0FF]"></i>
+              <span class="text-sm text-gray-300">AI駆動開発</span>
+            </div>
+            <div class="flex items-center gap-2 px-4 py-2 bg-gray-900 rounded-lg border border-[#00FF00]/30">
+              <i data-lucide="zap" class="w-5 h-5 text-[#00FF00]"></i>
+              <span class="text-sm text-gray-300">爆速開発</span>
+            </div>
+            <div class="flex items-center gap-2 px-4 py-2 bg-gray-900 rounded-lg border border-[#00F0FF]/30">
+              <i data-lucide="globe" class="w-5 h-5 text-[#00F0FF]"></i>
+              <span class="text-sm text-gray-300">多言語対応</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- アイコン/イラスト -->
+        <div class="flex justify-center" data-aos="fade-left" data-aos-delay="200">
+          <div class="relative w-64 h-64 sm:w-80 sm:h-80 animate-float">
+            <!-- AIとコードを組み合わせた抽象的なデザイン -->
+            <svg viewBox="0 0 300 300" class="w-full h-full">
+              <!-- 背景円 -->
+              <circle
+                cx="150"
+                cy="150"
+                r="120"
+                fill="none"
+                stroke="url(#gradient1)"
+                stroke-width="2"
+                class="animate-pulse"
+              />
+              
+              <!-- コードブロックを模した矩形 -->
+              <rect
+                x="80"
+                y="80"
+                width="140"
+                height="140"
+                fill="none"
+                stroke="#00F0FF"
+                stroke-width="2"
+                rx="8"
+              />
+              
+              <!-- AIを象徴するパターン -->
+              <circle cx="120" cy="120" r="8" fill="#00F0FF" />
+              <circle cx="180" cy="120" r="8" fill="#00FF00" />
+              <circle cx="150" cy="180" r="8" fill="#00F0FF" />
+              
+              <!-- 接続線 -->
+              <line
+                x1="120"
+                y1="120"
+                x2="150"
+                y2="180"
+                stroke="#00F0FF"
+                stroke-width="2"
+                opacity="0.5"
+              />
+              <line
+                x1="180"
+                y1="120"
+                x2="150"
+                y2="180"
+                stroke="#00FF00"
+                stroke-width="2"
+                opacity="0.5"
+              />
+              <line
+                x1="120"
+                y1="120"
+                x2="180"
+                y2="120"
+                stroke="#00F0FF"
+                stroke-width="2"
+                opacity="0.5"
+              />
+
+              <!-- グラデーション定義 -->
+              <defs>
+                <lineargradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00F0FF" />
+                  <stop offset="100%" stop-color="#00FF00" />
+                </lineargradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#1A202C] to-black">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 lg:mb-16 text-center gradient-text" data-aos="fade-up">
+        制作実績
+      </h2>
+
+      <!-- React作業時間ロガー メイン紹介 -->
+      <div class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700/50 shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+        <!-- タイトルセクション -->
+        <div class="px-6 sm:px-8 lg:px-12 py-8 lg:py-10 border-b border-gray-700/50">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="p-3 bg-[#00FF00]/20 rounded-lg">
+              <i data-lucide="bar-chart-3" class="w-8 h-8 text-[#00FF00]"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
+                React作業時間ロガー
+              </h3>
+              <p class="text-gray-400 text-sm sm:text-base">
+                精密な時間計測と自動集計機能を備えた、プロフェッショナル向けログ管理システム
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 画像と詳細コンテンツ -->
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 px-6 sm:px-8 lg:px-12 py-8 lg:py-12">
+          <!-- 画像プレースホルダー -->
+          <div class="order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
+            <div class="relative w-full h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-[#1A202C] via-gray-900 to-black rounded-xl overflow-hidden border border-gray-700/50">
+              <img src="img/app-photo.png" alt="React作業時間ロガー" class="w-full h-full object-cover opacity-30">
+              <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                <div class="text-center p-6">
+                  <i data-lucide="clock" class="w-20 h-20 text-[#00FF00] opacity-60 mx-auto mb-4"></i>
+                  <p class="text-gray-400 text-sm">React作業時間ロガー<br>スクリーンショット</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 詳細説明 -->
+          <div class="order-1 lg:order-2 space-y-6 lg:space-y-8" data-aos="fade-left" data-aos-delay="200">
+            <div>
+              <h4 class="text-xl sm:text-2xl font-bold text-white mb-4 lg:mb-6 flex items-center gap-2">
+                <i data-lucide="zap" class="w-6 h-6 text-[#00F0FF]"></i>
+                主な機能
+              </h4>
+              <ul class="space-y-3 lg:space-y-4">
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-1">
+                    <div class="w-2 h-2 rounded-full bg-[#00FF00]"></div>
+                  </div>
+                  <div>
+                    <p class="text-white font-semibold mb-1">選択項目の自動集計機能</p>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                      カテゴリやプロジェクト、タスクなどの選択項目を自動で集計し、作業時間の内訳を即座に可視化。複雑な分析もワンクリックで完了します。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-1">
+                    <div class="w-2 h-2 rounded-full bg-[#00F0FF]"></div>
+                  </div>
+                  <div>
+                    <p class="text-white font-semibold mb-1">0.01秒の精密な計測</p>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                      ミリ秒単位での時間計測を実現。短期間のタスクでも正確に記録でき、作業効率の分析精度が格段に向上します。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-1">
+                    <div class="w-2 h-2 rounded-full bg-[#00FF00]"></div>
+                  </div>
+                  <div>
+                    <p class="text-white font-semibold mb-1">リアルタイムデータ追跡</p>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                      作業中にリアルタイムでデータを更新。保存不要で即座に反映されるため、作業の流れを妨げません。
+                    </p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-1">
+                    <div class="w-2 h-2 rounded-full bg-[#00F0FF]"></div>
+                  </div>
+                  <div>
+                    <p class="text-white font-semibold mb-1">直感的なUI/UX</p>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                      React Hooksを活用した滑らかなインタラクション。学習コストを最小限に抑えた使いやすい設計です。
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 技術スタック -->
+        <div class="px-6 sm:px-8 lg:px-12 py-6 lg:py-8 bg-gray-800/50 border-t border-gray-700/50">
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+            <span class="text-gray-400 text-sm font-medium">技術スタック:</span>
+            <span class="px-3 py-1 bg-[#00F0FF]/20 text-[#00F0FF] text-xs sm:text-sm font-semibold rounded-full">React</span>
+            <span class="px-3 py-1 bg-[#00F0FF]/20 text-[#00F0FF] text-xs sm:text-sm font-semibold rounded-full">TypeScript</span>
+            <span class="px-3 py-1 bg-[#00FF00]/20 text-[#00FF00] text-xs sm:text-sm font-semibold rounded-full">Tailwind CSS</span>
+            <span class="px-3 py-1 bg-[#00F0FF]/20 text-[#00F0FF] text-xs sm:text-sm font-semibold rounded-full">LocalStorage</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- その他の制作物セクション -->
+      <div class="mt-12 lg:mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+        <p class="text-lg sm:text-xl text-gray-400 mb-6 lg:mb-8 leading-relaxed">
+          精密タイマー、高速道路料金検索UI、多言語対応技術調査レポート等の<br class="hidden sm:block">
+          その他の制作物は専用ポートフォリオサイトで公開中
+        </p>
+        <a
+          href="#"
+          class="inline-flex items-center gap-2 px-8 py-4 lg:px-10 lg:py-5 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg border border-gray-700 hover:border-[#00F0FF] transition-all duration-300 transform hover:scale-105"
+        >
+          <i data-lucide="external-link" class="w-5 h-5"></i>
+          ポートフォリオサイトを見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 lg:mb-16 text-center gradient-text" data-aos="fade-up">
+        技術スタック
+      </h2>
+
+      <!-- AI駆動開発スタイルの説明 -->
+      <div class="mb-12 lg:mb-16 p-6 lg:p-8 bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl border border-[#00F0FF]/30" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-start gap-4">
+          <i data-lucide="sparkles" class="w-8 h-8 text-[#00F0FF] flex-shrink-0 mt-1"></i>
+          <div>
+            <h3 class="text-xl font-semibold text-white mb-2 flex items-center gap-2">
+              AI（Cursor）を活用した爆速開発スタイル
+            </h3>
+            <p class="text-gray-300">
+              CursorとClaude 4.5を最適なパートナーとして活用し、従来の開発速度を遥かに超える効率でプロダクトを構築します。
+              アイデアから実装まで、最短ルートで形にします。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <!-- JavaScript (TypeScript) - 上級 -->
+        <div class="bg-gray-900 rounded-xl p-6 lg:p-7 border border-gray-800 hover:border-[#00F0FF] transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold text-white flex items-center gap-2">
+              <i data-lucide="code" class="w-5 h-5 text-[#00F0FF]"></i>
+              JavaScript
+            </h3>
+            <span class="px-3 py-1 bg-[#00F0FF]/20 text-[#00F0FF] text-xs font-semibold rounded-full">上級</span>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">TypeScript対応</p>
+          <div class="skill-level w-full"></div>
+        </div>
+
+        <!-- React - 上級 -->
+        <div class="bg-gray-900 rounded-xl p-6 lg:p-7 border border-gray-800 hover:border-[#00F0FF] transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold text-white flex items-center gap-2">
+              <i data-lucide="atom" class="w-5 h-5 text-[#00F0FF]"></i>
+              React
+            </h3>
+            <span class="px-3 py-1 bg-[#00F0FF]/20 text-[#00F0FF] text-xs font-semibold rounded-full">上級</span>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">Next.js App Router対応</p>
+          <div class="skill-level w-full"></div>
+        </div>
+
+        <!-- Tailwind CSS - 上級 -->
+        <div class="bg-gray-900 rounded-xl p-6 lg:p-7 border border-gray-800 hover:border-[#00FF00] transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold text-white flex items-center gap-2">
+              <i data-lucide="palette" class="w-5 h-5 text-[#00FF00]"></i>
+              Tailwind CSS
+            </h3>
+            <span class="px-3 py-1 bg-[#00FF00]/20 text-[#00FF00] text-xs font-semibold rounded-full">上級</span>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">レスポンシブデザイン対応</p>
+          <div class="skill-level w-full"></div>
+        </div>
+
+        <!-- Cursor (AI) -->
+        <div class="bg-gray-900 rounded-xl p-6 lg:p-7 border border-gray-800 hover:border-[#00F0FF] transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="400">
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="sparkles" class="w-5 h-5 text-[#00F0FF]"></i>
+            <h3 class="text-xl font-semibold text-white">Cursor</h3>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">AI駆動開発ツール</p>
+          <div class="skill-level w-full"></div>
+        </div>
+
+        <!-- Git/GitHub -->
+        <div class="bg-gray-900 rounded-xl p-6 lg:p-7 border border-gray-800 hover:border-[#00FF00] transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="500">
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="git-branch" class="w-5 h-5 text-[#00FF00]"></i>
+            <h3 class="text-xl font-semibold text-white">Git/GitHub</h3>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">バージョン管理</p>
+          <div class="skill-level w-3/4"></div>
+        </div>
+
+        <!-- Vercel -->
+        <div class="bg-gray-900 rounded-xl p-6 lg:p-7 border border-gray-800 hover:border-[#00F0FF] transition-all duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="600">
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="cloud" class="w-5 h-5 text-[#00F0FF]"></i>
+            <h3 class="text-xl font-semibold text-white">Vercel</h3>
+          </div>
+          <p class="text-sm text-gray-400 mb-3">デプロイ</p>
+          <div class="skill-level w-4/5"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-[#1A202C]">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 lg:mb-12 gradient-text" data-aos="fade-up">
+        お問い合わせ
+      </h2>
+      <p class="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-12 lg:mb-16 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        あなたのアイデアを、AIの力で最短ルートで形にします。
+        <br class="hidden sm:block">
+        まずはカジュアルにご相談ください。
+      </p>
+      <a
+        href="https://crowdworks.jp/public/employees/your-profile-id"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#00F0FF] to-[#00FF00] text-[#1A202C] font-bold text-lg sm:text-xl rounded-lg hover:shadow-lg hover:shadow-[#00F0FF]/50 transform hover:scale-105 transition-all duration-300"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+      >
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+        クラウドワークスで相談する
+        <i data-lucide="external-link" class="w-5 h-5"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto text-center text-gray-400">
+      <p>© 2025 Caio. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Lucide Iconsの初期化
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      
+      // AOS.jsの初期化
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+      });
+    });
+  </script>
+</body>
+</html>
